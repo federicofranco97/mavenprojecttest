@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Raid Manager</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="resources/style.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <style>
+            .table {
+              border-collapse: collapse;
+              width: 300px;
+              margin-left: 500px;
+              margin-top: 50px;
+              color: white; 
+              
+              
+            }
+
+            th, td {
+              padding: 8px;
+              text-align: center;
+              border-bottom: 1px solid #ddd;
+            }
+            
+            
+           
+        </style>
+    </head>
+    <body class="bodybg">
+        <div>
+            <table id="raidTable" class="table">
+                <thead>
+                <th style="font-size: 30px">Anotados</th>
+                </thead>
+                <tbody>
+                    <tr><td>user1</td></tr>
+                    <tr><td>user2</td></tr>
+                    <tr><td>user3</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div style="margin-top: 20px;margin-left: 40%">
+            <input type="text" id="inUser" placeholder="Ingrese Tag" style="background-color: black;color: white">
+            <button style="color: white;background-color: black;" onclick="addUs()">Anotarme</button>
+        </div>
+        
+        
+        <button type="button" onclick="movePage()" > Mover Pagina</button>
+        
+        
+    </body>
+</html>
+<script>
+    function addUs(){
+        var newU=document.getElementById("inUser").value;
+        if(newU===null || newU===" " || newU===""){
+            alert("Ingresa un nombre Valido");
+            return;
+        }
+        var table = document.getElementById("raidTable");
+        var newRow   = table.insertRow(-1);
+        var newCell = newRow.insertCell(0);
+        newCell.innerHTML=newU;
+        document.getElementById("inUser").value="";
+    }
+    
+    function movePage(){
+        console.log("Entra metodo JS");
+        $.ajax({
+            url: "/index/show",
+            type: "GET"
+            
+           
+        });
+    }
+</script>
+
